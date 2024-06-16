@@ -1,0 +1,96 @@
+﻿@model IEnumerable<arusha.Models.University>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .wide-col {
+            width: 150px; /* Увеличили ширину столбца */
+        }
+
+        .wider-col {
+            width: 250px; /* Увеличили ширину столбца еще больше */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">University List</h1>
+
+        <!-- Форма поиска -->
+        <form method="get" action="@Url.Action("Index", "University")" class="mb-4">
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <input type="text" id="searchInput" name="searchQuery" class="form-control" placeholder="Search">
+                </div>
+                <div class="col-md-4">
+                    <select id="searchCriteria" name="searchCriteria" class="form-control">
+                        <option value="Name">Name</option>
+                        <option value="FoundedYear">Founded Year</option>
+                        <option value="Location">Location</option>
+                        <option value="Website">Website</option>
+                        <option value="AccreditationStatus">Accreditation Status</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Таблица для отображения списка университетов -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Founded Year</th>
+                        <th>Location</th>
+                        <th>Website</th>
+                        <th>Accreditation Status</th>
+                        <th class="wide-col">Select</th>
+                        <th class="wide-col">Right</th>
+                        <th class="wider-col">Degree</th>
+                        <th class="wider-col">Notes</th>
+                        <!-- Добавьте другие поля по вашему выбору -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Цикл для отображения каждого университета -->
+                    @foreach (var university in Model)
+                    {
+                        <tr>
+                            <!-- Отображение данных о университете -->
+                            <td>@university.Name</td>
+                            <td>@university.FoundedYear</td>
+                            <td>@university.Location</td>
+                            <td><a href="@university.Website" target="_blank">@university.Website</a></td>
+                            <td>@university.AccreditationStatus</td>
+                            <!-- Добавление компонентов ввода данных -->
+                            <td><input type="radio" name="Select"></td>
+                            <td><input type="checkbox" name="Right"></td>
+                            <td>
+                                <select name="comboBox" class="form-control">
+                                    <option value="Option1">Master</option>
+                                    <option value="Option2">Bachelor</option>
+                                    <!-- Добавьте другие варианты по вашему выбору -->
+                                </select>
+                            </td>
+                            <td><input type="text" name="dbText" class="form-control"></td>
+                            <!-- Добавьте другие компоненты по вашему выбору -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+@await Html.PartialAsync("_Footer")

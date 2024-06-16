@@ -1,0 +1,42 @@
+﻿@model arusha.Models.University
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Details</title>
+    <style>
+        .university-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .university-info {
+            margin-bottom: 10px;
+        }
+
+            .university-info h1 {
+                margin-top: 0;
+            }
+
+            .university-info p {
+                margin-bottom: 5px;
+            }
+    </style>
+</head>
+<body>
+    <div class="university-container">
+        <div class="university-info">
+            <h1>@Model.Name</h1>
+            <p>Founded Year: @Model.FoundedYear</p>
+            <p>Location: @Model.Location</p>
+            <p>Website: <a href="@Model.Website">@Model.Website</a></p>
+            <p>Accreditation Status: @Model.AccreditationStatus</p>
+        </div>
+        <!-- Дополнительные стили и информация могут быть добавлены здесь -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .image-container {
+            margin-bottom: 30px;
+        }
+
+            .image-container img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 20px; /* Округление краев */
+            }
+
+        .footer {
+            margin-top: 50px;
+            color: #999;
+            text-align: center;
+        }
+
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+            .two-column .column {
+                width: 48%; /* Два столбца с небольшим промежутком */
+            }
+
+        .contact-form {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #555;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Join us</h1>
+        <p>
+            Welcome to our project! We're dedicated to advancing research and fostering collaboration among universities.
+        </p>
+            <div class="image-container">
+                <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image 2">
+            </div>
+
+
+            <div class="two-column">
+                <div class="column">
+                    <p>
+                        <strong>How to Join:</strong><br>
+                        Choose Your University: Select the university you are affiliated with to join our project.<br>
+                        Select Your Area of Interest: Specify your area of scientific interest or project so we can find the best match for you.<br>
+                        Join Our Community: Fill out a simple form and send it to us. We will contact you shortly for further steps.
+                    </p>
+                </div>
+                <div class="column">
+                    <p>
+                        <strong>Benefits of Participation:</strong><br>
+                        Innovative Research Projects: Engage in interesting projects with the best minds from various universities.<br>
+                        Development of Scientific Skills: Immerse yourself in scientific activities and develop your skills under the guidance of experienced research mentors.<br>
+                        Knowledge and Experience Exchange: Interact with colleagues, share your experiences, and learn new things from other participants.
+                    </p>
+                </div>
+            </div>
+            <div class="footer">
+                <form id="contactForm" class="contact-form" onsubmit="sendMessage()">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="example@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="123 Main Street, City, Country" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" class="form-control" rows="4" placeholder="Feel free to contact us for any inquiries or questions." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+                <p id="status"></p>
+            </div>
+
+            <script>function sendMessage() {
+                    // Здесь можно добавить код для отправки сообщения, если необходимо
+
+                    // После отправки сообщения, показываем статус "Отправлено"
+                    document.getElementById("status").innerText = "Sent";
+
+                    // Этот код предотвращает отправку формы (перезагрузку страницы)
+                    event.preventDefault();
+                }</script>
+</div>
+
+</body>
+</html>
+@await Html.PartialAsync("_Footer")

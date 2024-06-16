@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model arusha.ViewModels.StudentViewModel
+
+<h1>Student List</h1>
+
+@using (Html.BeginForm("Index", "Student", FormMethod.Get))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.SelectedGender, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.SelectedGender, new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <!-- Add other columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.FullName</td>
+                <!-- Add other columns as needed -->
+            </tr>
+        }
+    </tbody>
+</table>

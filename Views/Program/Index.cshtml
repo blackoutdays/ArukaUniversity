@@ -1,0 +1,54 @@
+﻿@model IEnumerable<arusha.Models.ProgramUni>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Program List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Program List</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var program in Model)
+                    {
+                        <tr>
+                            <td>@program.Name</td>
+                            <td>@program.StartDate.ToShortDateString()</td>
+                            <td>@program.EndDate.ToShortDateString()</td>
+                            <td>@program.Description</td>
+                            <td class="action-links">
+                                <a href="@Url.Action("Details", new { id = program.ProgramId })">Details</a>
+                                <a href="@Url.Action("Edit", new { id = program.ProgramId })">Edit</a>
+                                <a href="@Url.Action("Delete", new { id = program.ProgramId })">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-image: url('https://wallpapers.com/images/featured/cambridge-university-k3uqfq0l7bwrrmpr.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding-bottom: 100px; /* Увеличили отступ снизу для футера */
+        }
+
+        .text-center {
+            text-align: center;
+            padding-top: 50px;
+            color: white;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .image-container {
+            margin: 0 10px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+            .image-container img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                transition: opacity 0.3s ease; /* Добавляем анимацию */
+            }
+
+            .image-container:hover img {
+                opacity: 0.7; /* Уменьшаем прозрачность при наведении */
+            }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: black; /* Изменили цвет фона на черный */
+            padding: 20px 0; /* Увеличили отступы сверху и снизу для большего контента */
+            text-align: center;
+            color: white;
+        }
+
+        .footer-info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+            .footer-links a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+
+        hr {
+            border: none; /* Убрали границу */
+            height: 1px; /* Задали высоту */
+            background-color: white; /* Изменили цвет на белый */
+            margin: 10px auto; /* Установили отступы */
+            width: 80%; /* Установили ширину */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="text-center">
+            <h1>Welcome To University!</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+            <a href="@Url.Action("Index", "Program")" class="btn">Explore Programs</a>
+        </div>
+        <div class="image-row">
+            <div class="image-container">
+                <img src="https://m.wsj.net/video/20140908/090814moneyharvard/090814moneyharvard_1280x720.jpg" alt="Image 1">
+            </div>
+            <div class="image-container">
+                <img src="https://pbs.twimg.com/profile_images/1717820384337137664/MnkPeh8r_400x400.png" alt="Image 2">
+            </div>
+            <div class="image-container">
+                <img src="https://cdn.knoji.com/images/logo/yalebncollegecom.jpg?aspect=center&trim=true&flatten=true&width=500&height=250" alt="Image 3">
+            </div>
+        </div>
+        <!-- Добавленный текст -->
+        <div class="text-center" style="margin-top: 50px;">
+            <p>Join us and unlock your potential!</p>
+            <p>Apply now and start your journey with us.</p>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-info">Contact us: arukalarkins@icloud.com</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+        </div>
+    </footer>
+
+</body>
+</html>

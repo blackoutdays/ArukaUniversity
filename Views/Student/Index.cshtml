@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model arusha.ViewModels.StudentViewModel
+@using arusha.Models;
+
+<h1 class="text-center">Student List</h1>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    th, td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .wide-col {
+        width: 150px; /* Увеличили ширину столбца */
+    }
+
+    .wider-col {
+        width: 250px; /* Увеличили ширину столбца еще больше */
+    }
+</style>
+<div class="container">
+    @using (Html.BeginForm("Index", "Student", FormMethod.Get, new { @class = "mb-3" }))
+    {
+        <div class="row align-items-end">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SelectedGender, htmlAttributes: new { @class = "control-label" })
+                    @{
+                        var genderList = Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(g => new SelectListItem
+                        {
+                            Text = g.ToString(),
+                            Value = g.ToString()
+                        }).ToList();
+                    }
+                    @Html.DropDownListFor(model => model.SelectedGender, genderList, "Sort By Male and Female Gender", new { @class = "form-control" })
+                </div>
+                @Html.HiddenFor(model => model.SelectedGender) <!-- Добавляем скрытое поле для передачи значения SelectedGender -->
+                <button type="submit" class="btn btn-primary btn-block">Filter</button>
+            </div>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="bg-dark text-white">Student ID</th>
+                    <th class="bg-dark text-white">Name</th>
+                    <th class="bg-dark text-white">Country</th>
+                    <th class="bg-dark text-white">Birth Date</th>
+                    <th class="bg-dark text-white">Gender</th>
+                    <th class="bg-dark text-white">Email</th>
+                    <th class="bg-dark text-white">Phone</th>
+                    <th class="bg-dark text-white">Address</th>
+                    <th class="bg-dark text-white">GPA</th>
+                    <th class="bg-dark text-white">Major</th>
+                    <th class="bg-dark text-white">Age</th> <!-- Добавляем столбец для возраста -->
+                    <!-- Add other columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td>@student.StudentId</td>
+                        <td>@student.FullName</td>
+                        <td>@student.CountryId</td>
+                        <td>@student.BirthDate.ToShortDateString()</td>
+                        <td>@student.Gender</td>
+                        <td>@student.Email</td>
+                        <td>@student.Phone</td>
+                        <td>@student.Address</td>
+                        <td>@student.Gpa</td>
+                        <td>@student.Major</td>
+                        <td>@student.Age</td> <!-- Выводим возраст студента -->
+
+                        <!-- Add other columns as needed -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_Footer")
